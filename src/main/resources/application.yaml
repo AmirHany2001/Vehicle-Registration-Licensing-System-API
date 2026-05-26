@@ -1,0 +1,32 @@
+spring:
+  application:
+    name: vehicle-registration-system
+
+
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/vehicleregistration
+    username: root
+    password: amer5047686
+
+  # JPA and Hibernate Configuration for Oracle
+  jpa:
+    hibernate:
+      ddl-auto: create
+    show-sql: true
+
+application:
+  security:
+    jwt:
+      secret-key: 404E635266556A586E3272357538782F413F4428472B4B6250645367566B5970
+      expiration: 86400000
+    admin:
+      secret:
+        P@ssw0rd
+
+
+
+
+
+
+

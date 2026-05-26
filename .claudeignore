@@ -1,0 +1,42 @@
+# Dependency folders (Massive token drains)
+node_modules/
+bower_components/
+vendor/
+
+# Build and output directories
+dist/
+build/
+out/
+target/
+.next/
+.nuxt/
+
+# Lockfiles (Claude doesn't need to read thousands of lines of dependency hashes)
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+Cargo.lock
+Gemfile.lock
+
+# Version control and system files
+.git/
+.svn/
+.DS_Store
+Thumbs.db
+
+# Logs and databases
+*.log
+*.sqlite
+.env
+.env.*
+
+# Maven build directory (contains compiled .class files and jars)
+target/
+
+# Maven wrapper and IDE settings
+.mvn/
+.idea/
+
+# Maven wrapper scripts (optional, but saves a tiny bit of context)
+mvnw
+mvnw.cmd
