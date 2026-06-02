@@ -17,6 +17,9 @@ public interface LicenseRepository extends JpaRepository<License, Long> {
     // Find all expired licenses — used for the expired licenses endpoint
     List<License> findByExpiryDateBeforeAndActiveTrue(LocalDate date);
 
-    // Check if vehicle already has a license
-    boolean existsByVehicleId(Long vehicleId);
+    // Count active licenses
+    long countByActiveTrue();
+
+    // Count expired licenses
+    long countByExpiryDateBeforeAndActiveTrue(LocalDate date);
 }

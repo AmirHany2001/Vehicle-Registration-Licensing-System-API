@@ -12,7 +12,7 @@ spring:
   # JPA and Hibernate Configuration for Oracle
   jpa:
     hibernate:
-      ddl-auto: create
+      ddl-auto: update
     show-sql: true
 
 application:

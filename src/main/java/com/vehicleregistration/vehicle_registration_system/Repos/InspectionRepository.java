@@ -21,4 +21,7 @@ public interface InspectionRepository extends JpaRepository<Inspection, Long> {
 
     // Get vehicles with inspections due soon — nextDueDate is before a given date
     List<Inspection> findByNextDueDateBefore(LocalDate date);
+
+    // Count upcoming inspections due within 30 days
+    long countByNextDueDateBefore(LocalDate date);
 }

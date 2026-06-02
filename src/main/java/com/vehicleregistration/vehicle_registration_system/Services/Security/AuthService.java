@@ -31,6 +31,11 @@ public class AuthService {
 
     public AuthDto.Response register(UserDto.Request request , String secret) {
 
+
+        if(secret.isBlank()) {
+            throw new UnauthorizedException("header.missed");
+        }
+
         // 1. Check duplicate email
         if (userRepository.existsByEmailIgnoreCase(request.getEmail())) {
             throw new DuplicateResourceException("user.duplicate.email", request.getEmail());
@@ -40,6 +45,7 @@ public class AuthService {
         if (userRepository.existsByNationalId(request.getNationalId())) {
             throw new DuplicateResourceException("user.duplicate.nationalId", request.getNationalId());
         }
+
 
 
         // 3. Map request to entity

@@ -16,6 +16,6 @@ public interface VehicleRepository extends JpaRepository<Vehicle, Long> {
     // Get all vehicles of a specific owner
     List<Vehicle> findByOwnerId(Long ownerId);
 
-    // Find vehicle by plate number
-    Optional<Vehicle> findByPlateNumber(String plateNumber);
+    // Count vehicles by status
+    long countByStatus(Vehicle.VehicleStatus status);
 }

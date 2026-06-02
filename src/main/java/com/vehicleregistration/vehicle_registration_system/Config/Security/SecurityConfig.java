@@ -41,6 +41,7 @@ public class SecurityConfig {
                                 "/test/**"
                         ).permitAll()
                         .requestMatchers(
+                                "/admin/**",
                                 "/vehicles/*/approve",
                                 "/vehicles/*/reject",
                                 "/licenses/expired",
