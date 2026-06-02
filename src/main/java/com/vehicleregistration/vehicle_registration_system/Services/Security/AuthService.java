@@ -11,7 +11,6 @@ import com.vehicleregistration.vehicle_registration_system.Repos.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -24,7 +23,6 @@ public class AuthService {
     private final UserRepository userRepository;
     private final UserMapper userMapper;
     private final PasswordEncoder passwordEncoder;
-    private final AuthenticationManager authenticationManager;
 
     @Value("${application.security.admin.secret}")
     private String adminSecret;
@@ -69,22 +67,15 @@ public class AuthService {
     // ── Login ─────────────────────────────────────────────
     public AuthDto.Response login(AuthDto.Request request) {
 
-        // 1. Validate credentials
-        authenticationManager.authenticate(
-                new UsernamePasswordAuthenticationToken(
-                        request.getEmail(),
-                        request.getPassword()
-                )
-        );
 
-        // 2. Load user
+        // 1. Load user
         User user = userRepository.findByEmailIgnoreCase(request.getEmail())
-                .orElseThrow(() -> new NotFoundException("user.not.found.email", request.getEmail()));
+                .orElseThrow(() -> new NotFoundException("user.not.found.email"));
 
-        // 3. Generate token
+        // 2. Generate token
         String token = jwtService.generateToken(user.getEmail());
 
-        // 4. Return response
+        // 3. Return response
         return buildResponse(token, user);
     }
 
